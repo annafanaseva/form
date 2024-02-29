@@ -7,7 +7,7 @@ import './App.scss';
 import './App.css';
 
 const App = () => {
-  const API_URL = 'https://betapress.scaletrk.com/api/v2/affiliate/leads?api-key=ed38cf353283bc2600f24aebbd88c8d9e297d9a5';
+  const API_URL = 'api/v2/affiliate/leads?api-key=ed38cf353283bc2600f24aebbd88c8d9e297d9a5';
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -22,35 +22,19 @@ const App = () => {
       'birthday': formData.get('birthday')
     };
 
-    console.log(data);
-
     try {
       const response = await fetch(API_URL, {
         method: 'POST',
-        mode: 'no-cors',
         body: JSON.stringify(data),
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json; charset=UTF-8' },
       });
 
       if (response.ok) {
-        console.log('ok');
+        event.target.reset();
       } else {
       }
     } catch (error) {
     }
-
-    // axios
-    //   .post('https://betapress.scaletrk.com/api/v2/affiliate/leads?api-key=ed38cf353283bc2600f24aebbd88c8d9e297d9a5', {
-    //     method: 'POST',
-    //     mode: 'no-cors',
-    //     body: JSON.stringify(data)
-    //   })
-    //   .then((resp) => {
-    //     console.log(resp)
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
   };
 
   return (
