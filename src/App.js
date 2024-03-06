@@ -15,18 +15,22 @@ const App = () => {
 
     const data = {
       "goal_id": 2,
+      "ip": "146.158.77.52",
       'firstname': formData.get('firstname'),
       'lastname': formData.get('lastname'),
       'phone': formData.get('phone'),
-      'country': formData.get('country'),
+      'custom1': formData.get('country'),
       'birthday': formData.get('birthday')
     };
 
     try {
       const response = await fetch(API_URL, {
         method: 'POST',
+        mode: 'no-cors',
         body: JSON.stringify(data),
-        headers: { 'Content-Type': 'application/json; charset=UTF-8' },
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8'
+        },
       });
 
       if (response.ok) {
@@ -51,7 +55,6 @@ const App = () => {
               name="firstname"
               aria-label="firstname"
               aria-describedby="basic-addon1"
-              required
             />
           </InputGroup>
 
@@ -61,7 +64,6 @@ const App = () => {
               name="lastname"
               aria-label="lastname"
               aria-describedby="basic-addon1"
-              required
             />
           </InputGroup>
 
@@ -71,18 +73,17 @@ const App = () => {
               name="phone"
               aria-label="phone"
               aria-describedby="basic-addon1"
-              required
             />
           </InputGroup>
 
           <InputGroup className="mb-4" required>
             <Form.Select aria-label="country" name="country">
               <option>Ваше гражданство</option>
-              <option value="1">РФ</option>
-              <option value="2">Беларусь</option>
-              <option value="3">Киргизия</option>
-              <option value="4">Казахстан</option>
-              <option value="5">Другое</option>
+              <option value="Россия">Россия</option>
+              <option value="Беларусь">Беларусь</option>
+              <option value="Киргизия">Киргизия</option>
+              <option value="Казахстан">Казахстан</option>
+              <option value="Другое">Другое</option>
             </Form.Select>
           </InputGroup>
 
@@ -92,7 +93,6 @@ const App = () => {
               name="birthday"
               aria-label="birthday"
               aria-describedby="basic-addon1"
-              required
             />
           </InputGroup>
 
